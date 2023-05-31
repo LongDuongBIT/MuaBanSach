@@ -12,7 +12,7 @@ namespace Mubasa.Web.Installers
                 options => options.UseMySQL(
                     configuration.GetConnectionString("Default")));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<IdentityUser, IdentityRole>(config => { config.SignIn.RequireConfirmedEmail = false; })
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultUI();
