@@ -6,19 +6,10 @@ using MySql.EntityFrameworkCore.Metadata;
 
 namespace Mubasa.DataAccess.Migrations
 {
-    public partial class InitDatabase : Migration
+    public partial class RemoveAllSchemas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "Address");
-
-            migrationBuilder.EnsureSchema(
-                name: "Production");
-
-            migrationBuilder.EnsureSchema(
-                name: "Sales");
-
             migrationBuilder.AlterDatabase()
                 .Annotation("MySQL:Charset", "utf8mb4");
 
@@ -39,7 +30,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Authors",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -54,7 +44,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Categories",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -69,7 +58,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CoverTypes",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -84,7 +72,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PaymentMethods",
-                schema: "Sales",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -100,7 +87,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Provinces",
-                schema: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -116,7 +102,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Publishers",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -131,7 +116,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Suppliers",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -168,7 +152,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Districts",
-                schema: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -183,7 +166,6 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Districts_Provinces_ProvinceId",
                         column: x => x.ProvinceId,
-                        principalSchema: "Address",
                         principalTable: "Provinces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -192,7 +174,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Products",
-                schema: "Production",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -214,35 +195,30 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Products_Authors_AuthorId",
                         column: x => x.AuthorId,
-                        principalSchema: "Production",
                         principalTable: "Authors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalSchema: "Production",
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_CoverTypes_CoverTypeId",
                         column: x => x.CoverTypeId,
-                        principalSchema: "Production",
                         principalTable: "CoverTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Publishers_PublisherId",
                         column: x => x.PublisherId,
-                        principalSchema: "Production",
                         principalTable: "Publishers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Products_Suppliers_SupplierId",
                         column: x => x.SupplierId,
-                        principalSchema: "Production",
                         principalTable: "Suppliers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -251,7 +227,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Wards",
-                schema: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -266,7 +241,6 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Wards_Districts_DistrictId",
                         column: x => x.DistrictId,
-                        principalSchema: "Address",
                         principalTable: "Districts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -275,7 +249,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Addresses",
-                schema: "Address",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -295,21 +268,18 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Addresses_Districts_DistrictId",
                         column: x => x.DistrictId,
-                        principalSchema: "Address",
                         principalTable: "Districts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Addresses_Provinces_ProvinceId",
                         column: x => x.ProvinceId,
-                        principalSchema: "Address",
                         principalTable: "Provinces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Addresses_Wards_WardId",
                         column: x => x.WardId,
-                        principalSchema: "Address",
                         principalTable: "Wards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -345,7 +315,6 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_AspNetUsers_Addresses_AddressId",
                         column: x => x.AddressId,
-                        principalSchema: "Address",
                         principalTable: "Addresses",
                         principalColumn: "Id");
                 })
@@ -442,7 +411,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "OrderHeaders",
-                schema: "Sales",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -478,28 +446,24 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_OrderHeaders_Districts_DistrictId",
                         column: x => x.DistrictId,
-                        principalSchema: "Address",
                         principalTable: "Districts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderHeaders_PaymentMethods_PaymentMethodId",
                         column: x => x.PaymentMethodId,
-                        principalSchema: "Sales",
                         principalTable: "PaymentMethods",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderHeaders_Provinces_ProvinceId",
                         column: x => x.ProvinceId,
-                        principalSchema: "Address",
                         principalTable: "Provinces",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderHeaders_Wards_WardId",
                         column: x => x.WardId,
-                        principalSchema: "Address",
                         principalTable: "Wards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -508,7 +472,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ShoppingItems",
-                schema: "Sales",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -529,7 +492,6 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_ShoppingItems_Products_ProductId",
                         column: x => x.ProductId,
-                        principalSchema: "Production",
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -538,7 +500,6 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "OrderDetails",
-                schema: "Sales",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -554,14 +515,12 @@ namespace Mubasa.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_OrderDetails_OrderHeaders_OrderHeaderId",
                         column: x => x.OrderHeaderId,
-                        principalSchema: "Sales",
                         principalTable: "OrderHeaders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderDetails_Products_ProductId",
                         column: x => x.ProductId,
-                        principalSchema: "Production",
                         principalTable: "Products",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -570,19 +529,16 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_DistrictId",
-                schema: "Address",
                 table: "Addresses",
                 column: "DistrictId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_ProvinceId",
-                schema: "Address",
                 table: "Addresses",
                 column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_WardId",
-                schema: "Address",
                 table: "Addresses",
                 column: "WardId");
 
@@ -631,97 +587,81 @@ namespace Mubasa.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Districts_ProvinceId",
-                schema: "Address",
                 table: "Districts",
                 column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_OrderHeaderId",
-                schema: "Sales",
                 table: "OrderDetails",
                 column: "OrderHeaderId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderDetails_ProductId",
-                schema: "Sales",
                 table: "OrderDetails",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHeaders_ApplicationUserId",
-                schema: "Sales",
                 table: "OrderHeaders",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHeaders_DistrictId",
-                schema: "Sales",
                 table: "OrderHeaders",
                 column: "DistrictId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHeaders_PaymentMethodId",
-                schema: "Sales",
                 table: "OrderHeaders",
                 column: "PaymentMethodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHeaders_ProvinceId",
-                schema: "Sales",
                 table: "OrderHeaders",
                 column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderHeaders_WardId",
-                schema: "Sales",
                 table: "OrderHeaders",
                 column: "WardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_AuthorId",
-                schema: "Production",
                 table: "Products",
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CategoryId",
-                schema: "Production",
                 table: "Products",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_CoverTypeId",
-                schema: "Production",
                 table: "Products",
                 column: "CoverTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_PublisherId",
-                schema: "Production",
                 table: "Products",
                 column: "PublisherId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_SupplierId",
-                schema: "Production",
                 table: "Products",
                 column: "SupplierId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShoppingItems_ApplicationUserId",
-                schema: "Sales",
                 table: "ShoppingItems",
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ShoppingItems_ProductId",
-                schema: "Sales",
                 table: "ShoppingItems",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Wards_DistrictId",
-                schema: "Address",
                 table: "Wards",
                 column: "DistrictId");
         }
@@ -744,66 +684,52 @@ namespace Mubasa.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "OrderDetails",
-                schema: "Sales");
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "ShoppingItems",
-                schema: "Sales");
+                name: "ShoppingItems");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "OrderHeaders",
-                schema: "Sales");
+                name: "OrderHeaders");
 
             migrationBuilder.DropTable(
-                name: "Products",
-                schema: "Production");
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "PaymentMethods",
-                schema: "Sales");
+                name: "PaymentMethods");
 
             migrationBuilder.DropTable(
-                name: "Authors",
-                schema: "Production");
+                name: "Authors");
 
             migrationBuilder.DropTable(
-                name: "Categories",
-                schema: "Production");
+                name: "Categories");
 
             migrationBuilder.DropTable(
-                name: "CoverTypes",
-                schema: "Production");
+                name: "CoverTypes");
 
             migrationBuilder.DropTable(
-                name: "Publishers",
-                schema: "Production");
+                name: "Publishers");
 
             migrationBuilder.DropTable(
-                name: "Suppliers",
-                schema: "Production");
+                name: "Suppliers");
 
             migrationBuilder.DropTable(
-                name: "Addresses",
-                schema: "Address");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "Wards",
-                schema: "Address");
+                name: "Wards");
 
             migrationBuilder.DropTable(
-                name: "Districts",
-                schema: "Address");
+                name: "Districts");
 
             migrationBuilder.DropTable(
-                name: "Provinces",
-                schema: "Address");
+                name: "Provinces");
         }
     }
 }

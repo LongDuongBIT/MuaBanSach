@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Mubasa.Models
+﻿namespace Mubasa.Models
 {
-    [Table("Districts", Schema = "Address")]
     public class District
     {
         public int Id { get; set; }

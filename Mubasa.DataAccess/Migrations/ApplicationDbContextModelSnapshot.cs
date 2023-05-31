@@ -260,7 +260,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("WardId");
 
-                    b.ToTable("Addresses", "Address");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Author", b =>
@@ -275,7 +275,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors", "Production");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Category", b =>
@@ -290,7 +290,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", "Production");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Mubasa.Models.CoverType", b =>
@@ -305,7 +305,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CoverTypes", "Production");
+                    b.ToTable("CoverTypes");
                 });
 
             modelBuilder.Entity("Mubasa.Models.District", b =>
@@ -328,7 +328,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("ProvinceId");
 
-                    b.ToTable("Districts", "Address");
+                    b.ToTable("Districts");
                 });
 
             modelBuilder.Entity("Mubasa.Models.OrderDetail", b =>
@@ -355,7 +355,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails", "Sales");
+                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("Mubasa.Models.OrderHeader", b =>
@@ -434,7 +434,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("WardId");
 
-                    b.ToTable("OrderHeaders", "Sales");
+                    b.ToTable("OrderHeaders");
                 });
 
             modelBuilder.Entity("Mubasa.Models.PaymentMethod", b =>
@@ -453,7 +453,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaymentMethods", "Sales");
+                    b.ToTable("PaymentMethods");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Product", b =>
@@ -508,7 +508,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("SupplierId");
 
-                    b.ToTable("Products", "Production");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Province", b =>
@@ -526,7 +526,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Provinces", "Address");
+                    b.ToTable("Provinces");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Publisher", b =>
@@ -541,7 +541,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Publishers", "Production");
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("Mubasa.Models.ShoppingItem", b =>
@@ -566,7 +566,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ShoppingItems", "Sales");
+                    b.ToTable("ShoppingItems");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Supplier", b =>
@@ -581,7 +581,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Suppliers", "Production");
+                    b.ToTable("Suppliers");
                 });
 
             modelBuilder.Entity("Mubasa.Models.Ward", b =>
@@ -605,7 +605,7 @@ namespace Mubasa.DataAccess.Migrations
 
                     b.HasIndex("DistrictId");
 
-                    b.ToTable("Wards", "Address");
+                    b.ToTable("Wards");
                 });
 
             modelBuilder.Entity("Mubasa.Models.ApplicationUser", b =>

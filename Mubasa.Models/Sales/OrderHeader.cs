@@ -3,14 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mubasa.Models
 {
-    [Table("OrderHeaders", Schema = "Sales")]
     public class OrderHeader
     {
         public int Id { get; set; }
+
         [Required]
         public string? ReceiverName { get; set; }
+
         [Required]
         public string? ReceiverPhoneNumber { get; set; }
+
         public double GrandTotal { get; set; }
         public double ShippingCost { get; set; }
         public double Discount { get; set; } = 0;
@@ -18,6 +20,7 @@ namespace Mubasa.Models
         public string? PaymentStatus { get; set; }
         public string? ShippingInfo { get; set; }
         public string? TrackingNumber { get; set; }
+
         [Required]
         public string? ShippingAddress { get; set; }
 
@@ -40,6 +43,7 @@ namespace Mubasa.Models
         // public string PartnerPaymentId { get; set; } = "-1";
 
         public string ApplicationUserId { get; set; }
+
         [ForeignKey("ApplicationUserId")]
         public ApplicationUser ApplicationUser { get; set; }
     }

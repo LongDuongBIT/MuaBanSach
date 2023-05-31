@@ -2,11 +2,10 @@
 
 namespace Mubasa.Models
 {
-    [Table("ShoppingItems", Schema = "Sales")]
     public class ShoppingItem
     {
         public int Id { get; set; }
-        
+
         public int Count { get; set; }
 
         public int ProductId { get; set; }
