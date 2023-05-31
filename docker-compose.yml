@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  web:
+    image: mubasa
+    build:
+      context: .
+      dockerfile: Mubasa.Web/Dockerfile
+    networks:
+      - node-network
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./nginx/dev.conf:/etc/nginx/conf.d/default.conf
+      - ./ssl:/ssl
+    depends_on:
+      web:
+        condition: service_started
+    networks:
+      - node-network
+
+networks:
+  node-network:
+    driver: bridge
